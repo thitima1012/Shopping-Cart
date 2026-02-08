@@ -4,6 +4,7 @@ import { addProduct } from "../redux/product/action";
 
 const AddProduct = () => {
   const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     nameProduct: "",
     Category: "",
@@ -19,17 +20,16 @@ const AddProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // normalize numeric fields
-    const payload = {
-      nameProduct: form.nameProduct,
-      Category: form.Category,
-      imageURL: form.imageURL,
-      Price: Number(form.Price) || 0,
-      Quantity: Number(form.Quantity) || 0,
-      id: Date.now(),
-    };
 
-    dispatch(addProduct(payload));
+    dispatch(
+      addProduct({
+        ...form,
+        Price: Number(form.Price) || 0,
+        Quantity: Number(form.Quantity) || 0,
+        id: Date.now(),
+      })
+    );
+
     setForm({
       nameProduct: "",
       Category: "",
@@ -40,67 +40,80 @@ const AddProduct = () => {
   };
 
   return (
-    <form className="bg-base-200 p-4 rounded" onSubmit={handleSubmit}>
-      <h2 className="text-lg font-semibold mb-3">Add Product</h2>
+    <>
 
-      <label className="block mb-2">
-        <span className="text-sm">Name</span>
+      {/* Product Name */}
+      <div className="mb-4">
+        <label className="text-sm text-gray-600">Product Name</label>
         <input
           name="nameProduct"
           value={form.nameProduct}
           onChange={handleChange}
-          className="input input-bordered w-full mt-1"
+          className="w-full mt-1 px-3 py-2 rounded bg-gray-700 text-white outline-none"
           required
         />
-      </label>
+      </div>
 
-      <label className="block mb-2">
-        <span className="text-sm">Category</span>
-        <input
+      {/* Category */}
+      <div className="mb-4">
+        <label className="text-sm text-gray-600">Category</label>
+        <select
           name="Category"
           value={form.Category}
           onChange={handleChange}
-          className="input input-bordered w-full mt-1"
-        />
-      </label>
+          className="w-full mt-1 px-3 py-2 rounded bg-gray-700 text-white outline-none"
+        >
+          <option value="">Select a category</option>
+          <option value="Appliances">Appliances</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Furniture">Furniture</option>
+          <option value="Accessories">Accessories</option>
+        </select>
+      </div>
 
-      <label className="block mb-2">
-        <span className="text-sm">Image URL</span>
+      {/* Image URL */}
+      <div className="mb-4">
+        <label className="text-sm text-gray-600">Image Url</label>
         <input
           name="imageURL"
           value={form.imageURL}
           onChange={handleChange}
-          className="input input-bordered w-full mt-1"
+          className="w-full mt-1 px-3 py-2 rounded bg-gray-700 text-white outline-none"
         />
-      </label>
+      </div>
 
-      <label className="block mb-2">
-        <span className="text-sm">Price</span>
-        <input
-          name="Price"
-          value={form.Price}
-          onChange={handleChange}
-          type="number"
-          step="0.01"
-          className="input input-bordered w-full mt-1"
-        />
-      </label>
+      {/* Price + Quantity */}
+      <div className="flex gap-3 mb-5">
+        <div className="flex-1">
+          <label className="text-sm text-gray-600">Price</label>
+          <input
+            name="Price"
+            value={form.Price}
+            onChange={handleChange}
+            type="number"
+            className="w-full mt-1 px-3 py-2 rounded bg-gray-700 text-white outline-none"
+          />
+        </div>
 
-      <label className="block mb-4">
-        <span className="text-sm">Quantity</span>
-        <input
-          name="Quantity"
-          value={form.Quantity}
-          onChange={handleChange}
-          type="number"
-          className="input input-bordered w-full mt-1"
-        />
-      </label>
+        <div className="flex-1">
+          <label className="text-sm text-gray-600">Quantity</label>
+          <input
+            name="Quantity"
+            value={form.Quantity}
+            onChange={handleChange}
+            type="number"
+            className="w-full mt-1 px-3 py-2 rounded bg-gray-700 text-white outline-none"
+          />
+        </div>
+      </div>
 
-      <button className="btn btn-primary w-full" type="submit">
+      <button
+        onClick={handleSubmit}
+        className="w-full py-2 rounded bg-indigo-600 hover:bg-indigo-700 text-white font-medium"
+      >
         Add Product
       </button>
-    </form>
+    </>
   );
 };
 

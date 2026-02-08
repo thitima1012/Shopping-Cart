@@ -1,33 +1,34 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import AddProduct from "../component/addProduct";
+import AddProduct from "../component/AddProduct";
 import ProductItem from "../component/ProductItem";
 
 const Home = () => {
-  // product reducer is mounted as `products` in the store
   const products = useSelector((state) => state.products || []);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Home</h1>
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 p-10">
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Products */}
-        <div className="md:col-span-2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {products.map((item) => (
-              <ProductItem key={item.id} product={item} />
-            ))}
-          </div>
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10">
+
+        {/* PRODUCT LIST */}
+        <div className="lg:col-span-2 grid sm:grid-cols-2 gap-8">
+          {products.map((item) => (
+            <ProductItem key={item.id} product={item} />
+          ))}
         </div>
 
-        {/* Sidebar */}
-        <aside className="md:col-span-1">
-          <div className="sticky top-6">
-            <AddProduct />
-          </div>
-        </aside>
+        {/* SIDEBAR */}
+        <div className="bg-white rounded-2xl p-6 shadow-xl h-fit">
+          <h2 className="text-xl font-semibold mb-4 text-center">
+            Add New Product
+          </h2>
+
+          <AddProduct />
+        </div>
+
       </div>
+
     </div>
   );
 };

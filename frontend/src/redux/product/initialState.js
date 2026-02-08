@@ -45,7 +45,7 @@ export const initialState = [
     category: "Furniture",
     quantity: 4,
     price: 350,
-    imageUrl: "https://images.unsplash.com/photo-1505797149-43b0ad76620e?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?w=1000"
   },
   {
     id: 7,
@@ -53,7 +53,7 @@ export const initialState = [
     category: "Appliances",
     quantity: 20,
     price: 45,
-    imageUrl: "https://images.unsplash.com/photo-1594212699903-ec8a3ecc50f1?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1578898887932-dce23a595ad4?w=1000"
   },
   {
     id: 8,
@@ -61,7 +61,7 @@ export const initialState = [
     category: "Accessories",
     quantity: 25,
     price: 60,
-    imageUrl: "https://images.unsplash.com/photo-1527814050087-37a3d713ee9f?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=1000"
   },
   {
     id: 9,
@@ -77,6 +77,6 @@ export const initialState = [
     category: "Electronics",
     quantity: 14,
     price: 110,
-    imageUrl: "https://images.unsplash.com/photo-1608156639585-34a0a562559a?q=80&w=1000&auto=format&fit=crop"
+    imageUrl: "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=1000"
   }
 ];
